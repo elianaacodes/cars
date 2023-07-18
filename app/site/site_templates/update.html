@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+
+  
+<section class="bg-dark text-light text-center shadow mb-20">
+    <div class="container p-5 bg-dark">
+        <div class="row">
+            <div class="d-md-flex bg-dark align-items-center justify-content-evenly">
+                <h1 class="col text-center">Hello {{ current_user.first_name }}! Welcome to the Car Inventory. </h1>
+            </div>
+            <div>
+                <h3 class="col text-center">Please Create, Retrieve, Update or Delete a Car. </h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="text-center">
+    <div class="container p-5">
+        <div class="row align-items-center"><br>
+            <h3 class="p-5">Perform Your Search, Entry, Update and Deletion Here</h3>
+                <form method="post" action = "{{ url_for('site.cars') }}">
+                    
+                    <div>
+                        <label for="year">Year:</label><input type="number" name="year" min="1950" max="2023" autofocus placeholder="Year">
+                    </div>    
+                    <div>
+                        <label for="vin">VIN:</label><input type="text" name="vin"  autofocus placeholder="VIN" value="{{ car.vin }}">
+                    </div>
+                    <div>
+                        <label for="make">Make:</label>
+                        <input type="text" name="make" placeholder="Input Make" autofocus></th>
+                    </div>
+                    <div>
+                        <label for="model">Model:</label>
+                        <input type="text" name="model" placeholder="Input Model" autofocus>
+                    </div>
+                    <div>
+                        <label for="color">Color:</label>
+                        <input type="text" name="color" placeholder="Input Color" autofocus>
+                    </div>
+                    <button type="submit" name="create" formaction="/create_car">Create Car</button>
+                    
+                    
+                </form>
+            
+        </div>
+       
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-4"></div>
+            <div class="col-3 p-10">
+                <img src="../../static/images/pic2.jpg" class="d-flex align-items-center justify-content-center p-50 img-fluid" alt="">
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
